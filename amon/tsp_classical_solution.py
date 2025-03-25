@@ -102,34 +102,34 @@ def tsp_dynamic_programming(distances, start_city=1):
 def main():
     # Initialize adjacency matrix with 7 cities (indexed 1-7 for readability)
     num_cities = 7
-    adjacency_matrix = np.full((num_cities + 1, num_cities + 1), np.inf)
-
+    adjacency_matrix = np.full((num_cities + 1 , num_cities + 1 ), np.inf)
+    print(adjacency_matrix)
     # Fill in the distances from the graph
-    # City 1 connections
-    adjacency_matrix[1, 2] = adjacency_matrix[2, 1] = 4
-    adjacency_matrix[1, 3] = adjacency_matrix[3, 1] = 8
-    adjacency_matrix[1, 6] = adjacency_matrix[6, 1] = 9
+        # City 1 connections
+    adjacency_matrix[1, 2] = adjacency_matrix[2, 1] = 12
+    adjacency_matrix[1, 3] = adjacency_matrix[3, 1] = 10
+    adjacency_matrix[1, 7] = adjacency_matrix[7, 1] = 12
 
     # City 2 connections
-    adjacency_matrix[2, 3] = adjacency_matrix[3, 2] = 3
-    adjacency_matrix[2, 4] = adjacency_matrix[4, 2] = 8
-    adjacency_matrix[2, 6] = adjacency_matrix[6, 2] = 5
+    adjacency_matrix[2, 3] = adjacency_matrix[3, 2] = 8
+    adjacency_matrix[2, 4] = adjacency_matrix[4, 2] = 12
 
     # City 3 connections
-    adjacency_matrix[3, 4] = adjacency_matrix[4, 3] = 9
-    adjacency_matrix[3, 6] = adjacency_matrix[6, 3] = 6
-    adjacency_matrix[3, 7] = adjacency_matrix[7, 3] = 9
+    adjacency_matrix[3, 4] = adjacency_matrix[4, 3] = 11
+    adjacency_matrix[3, 5] = adjacency_matrix[5, 3] = 3
+    adjacency_matrix[3, 7] = adjacency_matrix[3, 7] = 9
 
     # City 4 connections
-    adjacency_matrix[4, 5] = adjacency_matrix[5, 4] = 8
-    adjacency_matrix[4, 7] = adjacency_matrix[7, 4] = 7
+    adjacency_matrix[4, 5] = adjacency_matrix[5, 4] = 11
+    adjacency_matrix[4, 6] = adjacency_matrix[6, 4] = 10
 
     # City 5 connections
-    adjacency_matrix[5, 6] = adjacency_matrix[6, 5] = 2
-    adjacency_matrix[5, 7] = adjacency_matrix[7, 5] = 9
+    adjacency_matrix[5, 7] = adjacency_matrix[7, 5] = 7
+    adjacency_matrix[5, 6] = adjacency_matrix[6, 5] = 6
 
     # City 6 connections
-    adjacency_matrix[6, 7] = adjacency_matrix[7, 6] = 3
+    adjacency_matrix[7, 6] = adjacency_matrix[6, 7] = 9
+
 
     # Set diagonal to 0 (distance from a city to itself)
     np.fill_diagonal(adjacency_matrix, 0)
@@ -138,7 +138,7 @@ def main():
     # This is needed because our implementation assumes a complete graph
     max_distance = np.max(adjacency_matrix[adjacency_matrix != np.inf]) * 10
     adjacency_matrix[adjacency_matrix == np.inf] = max_distance
-    
+    print(adjacency_matrix)
     # Solve TSP
     min_distance, optimal_path = tsp_dynamic_programming(adjacency_matrix)
     
