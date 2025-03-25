@@ -162,37 +162,36 @@ def main():
         7: (9, 0)       # City 7 positioned east
     }
     
-    # Create array of city coordinates
+    # Create array of city coordinates - NOTE: Adjusting for 0-indexing
     cities = np.array([city_coords[i+1] for i in range(7)])
     
     # Create the adjacency matrix (distances)
     distances = np.full((7, 7), np.inf)
-    
-    # City 1 connections
-    distances[0, 1] = distances[1, 0] = 4
-    distances[0, 2] = distances[2, 0] = 8
-    distances[0, 5] = distances[5, 0] = 9
-    
+
+    # City 1 connections (using 0-indexed values)
+    distances[0, 1] = distances[1, 0] = 12
+    distances[0, 2] = distances[2, 0] = 10
+    distances[0, 6] = distances[6, 0] = 12  # City 7 is index 6
+
     # City 2 connections
-    distances[1, 2] = distances[2, 1] = 3
-    distances[1, 3] = distances[3, 1] = 8
-    distances[1, 5] = distances[5, 1] = 5
-    
+    distances[1, 2] = distances[2, 1] = 8
+    distances[1, 3] = distances[3, 1] = 12
+
     # City 3 connections
-    distances[2, 3] = distances[3, 2] = 9
-    distances[2, 5] = distances[5, 2] = 6
+    distances[2, 3] = distances[3, 2] = 11
+    distances[2, 4] = distances[4, 2] = 3
     distances[2, 6] = distances[6, 2] = 9
-    
+
     # City 4 connections
-    distances[3, 4] = distances[4, 3] = 8
-    distances[3, 6] = distances[6, 3] = 7
-    
+    distances[3, 4] = distances[4, 3] = 11
+    distances[3, 5] = distances[5, 3] = 10
+
     # City 5 connections
-    distances[4, 5] = distances[5, 4] = 2
-    distances[4, 6] = distances[6, 4] = 9
-    
+    distances[4, 5] = distances[5, 4] = 6
+    distances[4, 6] = distances[6, 4] = 7
+
     # City 6 connections
-    distances[5, 6] = distances[6, 5] = 3
+    distances[5, 6] = distances[6, 5] = 9
     
     # Set diagonal to 0 (distance from a city to itself)
     np.fill_diagonal(distances, 0)
