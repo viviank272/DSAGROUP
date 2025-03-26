@@ -105,7 +105,9 @@ def main():
     adjacency_matrix = np.full((num_cities + 1 , num_cities + 1 ), np.inf)
     print(adjacency_matrix)
     # Fill in the distances from the graph
-        # City 1 connections
+   
+
+    # City 1 connections
     adjacency_matrix[1, 2] = adjacency_matrix[2, 1] = 12
     adjacency_matrix[1, 3] = adjacency_matrix[3, 1] = 10
     adjacency_matrix[1, 7] = adjacency_matrix[7, 1] = 12
@@ -117,13 +119,17 @@ def main():
     # City 3 connections
     adjacency_matrix[3, 4] = adjacency_matrix[4, 3] = 11
     adjacency_matrix[3, 5] = adjacency_matrix[5, 3] = 3
-    adjacency_matrix[3, 7] = adjacency_matrix[3, 7] = 9
+
+
+    adjacency_matrix[3, 7] = adjacency_matrix[7, 3] = 9
+
 
     # City 4 connections
     adjacency_matrix[4, 5] = adjacency_matrix[5, 4] = 11
     adjacency_matrix[4, 6] = adjacency_matrix[6, 4] = 10
 
     # City 5 connections
+
     adjacency_matrix[5, 7] = adjacency_matrix[7, 5] = 7
     adjacency_matrix[5, 6] = adjacency_matrix[6, 5] = 6
 
@@ -131,6 +137,7 @@ def main():
     adjacency_matrix[7, 6] = adjacency_matrix[6, 7] = 9
 
 
+  
     # Set diagonal to 0 (distance from a city to itself)
     np.fill_diagonal(adjacency_matrix, 0)
     
